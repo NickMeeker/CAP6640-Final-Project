@@ -93,7 +93,7 @@ def eval(tokenizer, model, masked_dataset, original_dataset):
     sys.stdout.flush()
 
   print('\n')
-  print('Model predicted ' + str(correct) + ' out of ' + str(len(masked_dataset)) + '.')
+  print('Model predicted ' + str(correct) + ' out of ' + str(total) + '.')
   print('Accuracy: ' + str(float(correct / total)))
 
 
