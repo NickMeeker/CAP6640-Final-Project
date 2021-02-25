@@ -80,12 +80,12 @@ def eval(tokenizer, model, masked_dataset, original_dataset):
       original = original_string_tokens[mask_indices[j]] 
       if(strings_match(prediction, original)):
         correct += 1
-
+    
     i += 1
     
     processed_msg = 'Processed message ' + str(i) + ' out of ' + str(len(masked_dataset))
     current_time = current_time_milli()
-    eta_seconds = (current_time - start_time) / 1000 / (i) * len(masked_dataset) 
+    eta_seconds = (current_time - start_time) / 1000 / (i) * (len(masked_dataset) - i)
     eta_minutes = int(eta_seconds / 60)
     eta_seconds = int(eta_seconds % 60)
     eta_msg = 'Estimated time remaining: ' + str(eta_minutes) + ' minutes ' + str(eta_seconds) + ' seconds'
@@ -94,7 +94,7 @@ def eval(tokenizer, model, masked_dataset, original_dataset):
 
   print('\n')
   print('Model predicted ' + str(correct) + ' out of ' + str(len(masked_dataset)) + '.')
-  print('Accuracy: ' + str(float(correct / len(masked_dataset))))
+  print('Accuracy: ' + str(float(correct / total)))
 
 
 def main():
